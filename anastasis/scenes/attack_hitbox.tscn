@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3rr5y6g6x4ik"]
+
+[ext_resource type="Script" uid="uid://cljmqljai4mpc" path="res://scripts/attack_hitbox.gd" id="1_boghs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8xky"]
+
+[node name="AttackHitbox" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("1_boghs")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D"]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_v8xky")
