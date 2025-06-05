@@ -1,8 +1,7 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://cmyco4kti1hnv"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://cmyco4kti1hnv"]
 
 [ext_resource type="Texture2D" uid="uid://cpvu4w4mr2nx5" path="res://assets/World/Grass.jpg" id="1_rmnya"]
 [ext_resource type="Texture2D" uid="uid://cqfwwp0guht8r" path="res://assets/World/Rock.png" id="2_q7m7a"]
-[ext_resource type="Texture2D" uid="uid://d1hvhnftb4vm5" path="res://assets/World/Fence.png" id="3_q7m7a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_olg6a"]
 texture = ExtResource("1_rmnya")
@@ -51,14 +50,8 @@ texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-27.4213, 21.7629, -24.5921, -21.7629, -10.4097, -32, 15.0362, -32, 26.986, -15.4517, 28.9447, 11.5343, 26.988, 22.747)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0f7hq"]
-texture = ExtResource("3_q7m7a")
-texture_region_size = Vector2i(64, 64)
-0:0/0 = 0
-
 [resource]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_olg6a")
 sources/1 = SubResource("TileSetAtlasSource_5mims")
-sources/2 = SubResource("TileSetAtlasSource_0f7hq")
