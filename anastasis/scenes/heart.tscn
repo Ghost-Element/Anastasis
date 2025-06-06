@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhikb2brdgibx"]
+
+[ext_resource type="Texture2D" uid="uid://ob87iyeh55x1" path="res://assets/Player/hp_1.png" id="1_v30as"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_v30as")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
