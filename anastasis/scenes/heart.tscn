@@ -1,10 +1,85 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhikb2brdgibx"]
+[gd_scene load_steps=12 format=3 uid="uid://bhikb2brdgibx"]
 
 [ext_resource type="Texture2D" uid="uid://ob87iyeh55x1" path="res://assets/Player/hp_1.png" id="1_v30as"]
+[ext_resource type="Script" uid="uid://ci37oym7alln6" path="res://scenes/heart.gd" id="1_ycbwg"]
 
-[node name="TextureRect" type="TextureRect"]
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_v30as")
+[sub_resource type="AtlasTexture" id="AtlasTexture_v30as"]
+atlas = ExtResource("1_v30as")
+region = Rect2(0, 0, 381, 385)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycbwg"]
+atlas = ExtResource("1_v30as")
+region = Rect2(381, 0, 381, 385)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krgnv"]
+atlas = ExtResource("1_v30as")
+region = Rect2(762, 0, 381, 385)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txm48"]
+atlas = ExtResource("1_v30as")
+region = Rect2(1143, 0, 381, 385)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nnyc"]
+atlas = ExtResource("1_v30as")
+region = Rect2(0, 385, 381, 385)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mtg8"]
+atlas = ExtResource("1_v30as")
+region = Rect2(381, 385, 381, 385)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u10h0"]
+atlas = ExtResource("1_v30as")
+region = Rect2(762, 385, 381, 385)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oquu7"]
+atlas = ExtResource("1_v30as")
+region = Rect2(1143, 385, 381, 385)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0fb81"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v30as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycbwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krgnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txm48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nnyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mtg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u10h0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oquu7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HeartContainer" type="Control"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ycbwg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0fb81")
+autoplay = "default"
+frame_progress = 0.648573

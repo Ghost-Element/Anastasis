@@ -2,12 +2,13 @@ extends CharacterBody2D
 
 @export var move_speed: float = 1500.0
 @export var attack_hitbox: PackedScene
+@export var health: int = 5
 
 @onready var anim := $AnimatedSprite2D
 
 var last_direction := Vector2.DOWN
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	## movement
 	# poll input, create vector
