@@ -19,7 +19,9 @@ func _rescale_and_center():
 		return
 	var frame_size = frame_texture.get_size()
 	var target_size = size
-	
+	print("Size: "+str(size))
+	if(size.x != size.y):
+		size.x = size.y
 	# Calculate uniform scale factor (preserve aspect ratio)
 	var scale_factor = min(target_size.x / frame_size.x, target_size.y / frame_size.y)
 	sprite.scale = Vector2.ONE * scale_factor
