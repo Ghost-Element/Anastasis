@@ -11,7 +11,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HP" type="Control" parent="."]
+[node name="HPBar" type="Control" parent="." node_paths=PackedStringArray("hearts_container")]
+unique_name_in_owner = true
 layout_mode = 1
 anchor_left = 0.25
 anchor_top = 1.0
@@ -21,9 +22,11 @@ offset_top = -64.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_oo0fn")
+hearts_container = NodePath("PanelContainer/MarginContainer/HBoxContainer")
+heart_scene = ExtResource("1_5ysmq")
 metadata/_edit_use_anchors_ = true
 
-[node name="PanelContainer" type="PanelContainer" parent="HP"]
+[node name="PanelContainer" type="PanelContainer" parent="HPBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,26 +34,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HP/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HPBar/PanelContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HP/PanelContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HPBar/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 0
-
-[node name="HeartContainer4" parent="HP/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_5ysmq")]
-layout_mode = 2
-
-[node name="HeartContainer3" parent="HP/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_5ysmq")]
-layout_mode = 2
-
-[node name="HeartContainer" parent="HP/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_5ysmq")]
-layout_mode = 2
-
-[node name="HeartContainer2" parent="HP/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_5ysmq")]
-layout_mode = 2
-
-[node name="HeartContainer5" parent="HP/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("1_5ysmq")]
-layout_mode = 2

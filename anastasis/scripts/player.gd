@@ -1,8 +1,15 @@
 extends CharacterBody2D
 
+signal health_changed(new_health: int, max_health: int)
+
+#func _ready():
+	#emit_signal("health_changed", health, max_health)  # sync UI at start
+	#print("emitted signal: "+str(health)+" and "+str(max_health))
+
 @export var move_speed: float = 1500.0
 @export var attack_hitbox: PackedScene
-@export var health: int = 5
+@export var max_health: int = 5
+@export var health: int = 4
 
 @onready var anim := $AnimatedSprite2D
 

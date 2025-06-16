@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=4 uid="uid://117redolkajh"]
+[gd_scene load_steps=5 format=4 uid="uid://117redolkajh"]
 
+[ext_resource type="Script" uid="uid://b74mkxpm64q4e" path="res://scenes/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bwl5tmthcmmu1" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="TileSet" uid="uid://cmyco4kti1hnv" path="res://assets/World/WorldTiles.tres" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://dlka58rebgim8" path="res://scenes/hud.tscn" id="3_lnu2h"]
@@ -7,6 +8,7 @@
 [node name="root" type="Node2D"]
 
 [node name="Game" type="Node" parent="."]
+script = ExtResource("1_lbhrr")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Game"]
 scale = Vector2(4, 4)
@@ -15,6 +17,7 @@ tile_set = ExtResource("1_yqjtg")
 metadata/is_destructible = false
 
 [node name="Player" parent="Game" instance=ExtResource("1_uwrxv")]
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="Game/Player"]
 zoom = Vector2(0.2, 0.2)
@@ -22,5 +25,6 @@ zoom = Vector2(0.2, 0.2)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HUD" parent="UI" instance=ExtResource("3_lnu2h")]
+unique_name_in_owner = true
 
 [node name="GameController" type="Node" parent="."]
