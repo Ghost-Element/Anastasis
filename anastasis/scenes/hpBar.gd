@@ -33,7 +33,10 @@ func change_max_health(current: int, maximum: int):
 			hearts_container.add_child(heart)
 			hpList.append(heart)
 	#if(current != maximum): # if not full hp when increasing hp?
-	print("Change max health to: "+str(maximum))
+	# play animations:
+	await get_tree().process_frame
+	for i in range(max_health, maximum):
+		await hpList[i].play_animation_till_frame("create", 7)
 	max_health = maximum
 	health = current
 	pass

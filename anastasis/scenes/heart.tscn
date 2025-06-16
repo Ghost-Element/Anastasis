@@ -293,7 +293,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"create",
-"speed": 7.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -468,6 +468,3 @@ script = ExtResource("1_ycbwg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0fb81")
 animation = &"create"
-autoplay = "show_all"
-frame = 14
-frame_progress = 1.0

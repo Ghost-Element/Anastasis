@@ -28,13 +28,11 @@ func rescale_and_center():
 	#(63.33506, 64.0) of (64.0, 64.0)
 	sprite.position = size / 2.0 
 
-func play_animation(anim_name: String):
-	sprite.play(anim_name)
+func play_animation(animation: String):
+	sprite.play(animation)
 
-func play_animation_get_delay(anim_name: String, frame: int) -> float:
-	sprite.play(anim_name)
-	var fps = sprite.sprite_frames.get_animation_speed(anim_name)
-	print(fps)
-	print(float(frame) / fps)
-	return float(frame) / fps
+func play_animation_till_frame(animation: String, frame: int):
+	sprite.play(animation)
+	while sprite.frame < frame:
+		await sprite.frame_changed
 	
