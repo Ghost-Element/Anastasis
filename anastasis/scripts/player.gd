@@ -6,14 +6,14 @@ signal health_changed(new_health: int, max_health: int)
 	#emit_signal("health_changed", health, max_health)  # sync UI at start
 	#print("emitted signal: "+str(health)+" and "+str(max_health))
 
-@export var move_speed: float = 1500.0
+@export var move_speed: float = 45000.0
 @export var attack_hitbox: PackedScene
 @export var max_health: int = 5
 @export var health: int = 4
 
 @onready var anim := $AnimatedSprite2D
 
-var last_direction := Vector2.DOWN
+var orientation := Vector2.DOWN
 
 func _process(_delta: float) -> void:
 	
@@ -27,16 +27,13 @@ func _process(_delta: float) -> void:
 		input_vector = input_vector.normalized()
 		if abs(input_vector.x) > abs(input_vector.y):
 			anim.frame = 1 if input_vector.x > 0 else 3
-			last_direction = Vector2.RIGHT if input_vector.x > 0 else Vector2.LEFT
+			orientation = Vector2.RIGHT if input_vector.x > 0 else Vector2.LEFT
 		else:
 			anim.frame = 0 if input_vector.y > 0 else 2
-			last_direction = Vector2.DOWN if input_vector.y > 0 else Vector2.UP
-	
-	
-	
+			orientation = Vector2.DOWN if input_vector.y > 0 else Vector2.UP
 	
 	# movement based on vector
-	velocity = input_vector * move_speed
+	velocity = input_vector * move_speed * _delta
 	move_and_slide()
 
 func _input(event):
@@ -51,10 +48,10 @@ func open_Inventory_GUI():
 	return;
 
 func do_basic_attack():
+	#check if able to do attack
 	var hitbox = attack_hitbox.instantiate()
+	hitbox.init_hitbox(Vector2(100,50), orientation, Vector2(200,0))
 	add_child(hitbox)
-	var offset := last_direction * 200
-	hitbox.global_position += offset
 	#start animation
 	#slow movement
 	#create hitbox

@@ -3,18 +3,11 @@
 [ext_resource type="Script" uid="uid://cljmqljai4mpc" path="res://scripts/attack_hitbox.gd" id="1_boghs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8xky"]
+size = Vector2(200, 20)
 
-[node name="AttackHitbox" type="Node2D"]
-
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_boghs")
 
-[node name="ColorRect" type="ColorRect" parent="Area2D"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v8xky")
