@@ -9,7 +9,7 @@ signal health_changed(new_health: int, max_health: int)
 @export var move_speed: float = 45000.0
 @export var attack_hitbox: PackedScene
 @export var max_health: int = 5
-@export var health: int = 4
+@export var health: int = 5
 
 @onready var anim := $AnimatedSprite2D
 
@@ -65,7 +65,7 @@ func do_jump():
 	return;
 
 func take_damage(dmg: int, sender):
-	print("Player took %d damage from %s", [dmg, sender])
+	print("Player took %d damage from %s"% [dmg, sender])
 	health -= dmg
-	print("Current health: %d / %d", [health, max_health])
-	#emit_signal("health_changed", health, max_health)
+	print("Current health: %d / %d"% [health, max_health])
+	emit_signal("health_changed", health, max_health)

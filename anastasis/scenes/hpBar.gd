@@ -41,22 +41,22 @@ func change_max_health(current: int, maximum: int):
 	health = current
 	pass
 
-func take_dmg(amount: int):
-	if(amount>=health):
+func take_dmg(current: int):
+	if(current<=0):
 		#TODO: Die
 		pass
 	else:
-		for i in range(health-1, health-amount-1, -1):
+		for i in range(health-1, current-1, -1):
 			hpList[i].play_animation("damage")
-		health = health - amount
+		health = current
 
-func regenerate_hp(amount: int):
-	if(health+amount>max_health):
-		amount = max_health-health
-		# Overheal bonus?
-	for i in range(health-1, max_health-1):
-		hpList[i].play_animation("heal")
-	health = health + amount
+func regenerate_hp(current: int):
+	if(current>max_health):
+		print("ERROR: call (too much currentHP): regenerate_hp(current = %d) while max = %d"% [current, max_health])
+	else:
+		for i in range(health-1, max_health-1):
+			hpList[i].play_animation("heal")
+		health = current
 
 func init_heart():
 	pass
@@ -65,6 +65,6 @@ func regenerate_full():
 	if(health == max_health):
 		print("Unnecessary call (already full hp): regenerate_full() while hp = "+str(health)+" of max = "+str(max_health))
 		pass
-	for i in range(health-1, max_health):
+	for i in range(health-1, max_health-1):
 		hpList[i].play_animation("heal")
 	health = max_health
