@@ -53,8 +53,10 @@ func _physics_process(_delta):
 			handle_charge(_delta)
 
 
-func take_damage(dmg: int, sender):
-	print("%s took %d damage from %s" % [self.to_string(), dmg, sender])
+func take_damage(sender):
+	print("%s took %d damage from %s" % [self.to_string(), sender.damage, sender])
+	# TODO:enemy hp management
+	# TODO:enemy knockback
 	queue_free()
 
 func set_target(target: Node):
@@ -117,7 +119,7 @@ func handle_fighting(_delta: float):
 		attack_timer = 0
 		# do attack
 		var hitbox = attack_hitbox.instantiate()
-		hitbox.init_hitbox(Vector2(150,150), Vector2(1,0), Vector2(250,0))
+		hitbox.init_hitbox(Vector2(150,150), Vector2(1,0), Vector2(250,0),0.4,1,1)
 		add_child(hitbox)
 	
 	if distance > charge_range:
@@ -152,7 +154,7 @@ func handle_charge(_delta: float):
 	elif charge_timer < (charge_wait_time + charge_charge_time):
 		if not has_charge_hitbox:
 			var hitbox = attack_hitbox.instantiate()
-			hitbox.init_hitbox(Vector2(180,120), Vector2(1,0), Vector2(150,0), 0.9, 3)
+			hitbox.init_hitbox(Vector2(180,120), Vector2(1,0), Vector2(150,0), 0.9, 3, -1)
 			add_child(hitbox)
 			has_charge_hitbox = true
 		direction = (target_node.global_position - global_position).normalized()
