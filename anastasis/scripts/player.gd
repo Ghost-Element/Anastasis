@@ -6,17 +6,18 @@ signal health_changed(new_health: int, max_health: int)
 	#emit_signal("health_changed", health, max_health)  # sync UI at start
 	#print("emitted signal: "+str(health)+" and "+str(max_health))
 
-@export var move_speed: float = 45000.0
+@export var move_speed: float = 70000.0
 @export var attack_hitbox: PackedScene
 @export var max_health: int = 5
 @export var health: int = 5
+@export var drag: float = 0.7 # set to 0.99 for ice physics
 
 @onready var anim := $AnimatedSprite2D
 
 var orientation := Vector2.DOWN
+var momentum := Vector2.ZERO
 
 func _process(_delta: float) -> void:
-	
 	## movement
 	# poll input, create vector
 	var input_vector := Vector2.ZERO
@@ -24,16 +25,17 @@ func _process(_delta: float) -> void:
 	input_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	# animation & direction updates based on vector
 	if input_vector.length() > 0:
-		input_vector = input_vector.normalized()
-		if abs(input_vector.x) > abs(input_vector.y):
-			anim.frame = 1 if input_vector.x > 0 else 3
-			orientation = Vector2.RIGHT if input_vector.x > 0 else Vector2.LEFT
+		momentum = (momentum*drag + input_vector*(0.5+0.5*(1-drag))).normalized()
+		if abs(momentum.x) > abs(momentum.y):
+			anim.frame = 1 if momentum.x > 0 else 3
 		else:
-			anim.frame = 0 if input_vector.y > 0 else 2
-			orientation = Vector2.DOWN if input_vector.y > 0 else Vector2.UP
-	
+			anim.frame = 0 if momentum.y > 0 else 2
+	else:
+		momentum *= drag
+	# if is currently moving, momentum = orientation. Otherwise keep orientation
+	orientation = momentum.normalized() if momentum.length() > 0 else orientation
 	# movement based on vector
-	velocity = input_vector * move_speed * _delta
+	velocity = momentum * move_speed * _delta
 	move_and_slide()
 
 func _input(event):

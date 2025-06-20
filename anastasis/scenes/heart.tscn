@@ -209,7 +209,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"create",
-"speed": 10.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -235,7 +235,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage",
-"speed": 5.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -325,5 +325,5 @@ script = ExtResource("1_ycbwg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0fb81")
-animation = &"damage"
+animation = &"heal"
 autoplay = "empty"

@@ -96,6 +96,7 @@ func handle_fighting(_delta: float):
 	
 	if distance > fighting_range:
 		# transition_from_fighting()
+		attack_timer = 0
 		# transition_to_follow()
 		state = State.FOLLOW
 		print("following2")
