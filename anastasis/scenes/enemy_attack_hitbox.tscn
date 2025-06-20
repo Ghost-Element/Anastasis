@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3rr5y6g6x4ik"]
+[gd_scene load_steps=3 format=3 uid="uid://dura8q10mw8i6"]
 
-[ext_resource type="Script" uid="uid://cljmqljai4mpc" path="res://scenes/attack_hitbox.gd" id="1_boghs"]
+[ext_resource type="Script" uid="uid://c6m8mmf3tq705" path="res://scenes/enemy_attack_hitbox.gd" id="1_1xd7b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8xky"]
 size = Vector2(200, 20)
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 0
-collision_mask = 4
-script = ExtResource("1_boghs")
+collision_mask = 6
+script = ExtResource("1_1xd7b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v8xky")

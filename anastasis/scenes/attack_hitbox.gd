@@ -27,6 +27,6 @@ func init_hitbox(size:Vector2, orientation:Vector2, position:Vector2):
 
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
-		body.take_damage(damage)  # Ensure enemy has this method
+		body.take_damage(damage, self)  # Ensure enemy has this method
 	if body is TileMapLayer:
-		print("hitting terrain")
+		print("Player is hitting terrain")

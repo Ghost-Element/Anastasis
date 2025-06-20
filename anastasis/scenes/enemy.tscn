@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cudrbdjfys74r"]
+[gd_scene load_steps=5 format=3 uid="uid://cudrbdjfys74r"]
 
 [ext_resource type="Texture2D" uid="uid://dlcy1idqb37na" path="res://assets/World/wolf.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://bvc2kmvdkooww" path="res://scenes/enemy.gd" id="1_md0e3"]
+[ext_resource type="PackedScene" uid="uid://dura8q10mw8i6" path="res://scenes/enemy_attack_hitbox.tscn" id="2_4ra3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tegq"]
 size = Vector2(300.625, 208.25)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+physics_interpolation_mode = 2
+collision_layer = 6
+collision_mask = 5
 script = ExtResource("1_md0e3")
+attack_hitbox = ExtResource("2_4ra3w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

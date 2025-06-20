@@ -63,3 +63,9 @@ func do_jump():
 	#velocity = Vector2(0, 10000)
 	#move_and_slide()
 	return;
+
+func take_damage(dmg: int, sender):
+	print("Player took %d damage from %s", [dmg, sender])
+	health -= dmg
+	print("Current health: %d / %d", [health, max_health])
+	#emit_signal("health_changed", health, max_health)

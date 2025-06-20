@@ -35,4 +35,3 @@ func play_animation_till_frame(animation: String, frame: int):
 	sprite.play(animation)
 	while sprite.frame < frame:
 		await sprite.frame_changed
-	
