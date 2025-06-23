@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal health_changed(new_health: int, max_health: int)
+signal game_over(over: bool)
 
 #func _ready():
 	#emit_signal("health_changed", health, max_health)  # sync UI at start
@@ -151,5 +152,7 @@ func take_damage(sender):
 			momentum = sender.knockback * Vector2(cos(sender.get_parent().rotation), sin(sender.get_parent().rotation))
 		print("Current health: %d / %d"% [health, max_health])
 		emit_signal("health_changed", health, max_health)
+		if(health <= 0):
+			emit_signal("game_over", true)
 	else:
 		print("blocked %d damage from %s"% [sender.damage, sender])

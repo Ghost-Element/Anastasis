@@ -1,0 +1,41 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "test_1.tsx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "test_1.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "untitled.tmx": {
+            "scale": 7.106,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 25.049254151421334,
+                "y": 24.97889107796228
+            }
+        }
+    },
+    "map.fixedSize": false,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 50,
+    "map.tileWidth": 50,
+    "openFiles": [
+        "untitled.tmx",
+        "test_1.tsx"
+    ],
+    "project": "TileMap.tiled-project",
+    "recentFiles": [
+        "untitled.tmx",
+        "test_1.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.type": 1
+}

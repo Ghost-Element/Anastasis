@@ -13,11 +13,16 @@ config_version=5
 config/name="Anastasis"
 run/main_scene="uid://117redolkajh"
 config/features=PackedStringArray("4.4", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Anastasis"
+
+[global_group]
+
+BreakableFence=""
 
 [input]
 

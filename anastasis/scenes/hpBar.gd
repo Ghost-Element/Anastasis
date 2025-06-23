@@ -12,6 +12,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func update_hearts(current: int, maximum: int):
+	print("Call: update_hearts(current: %d, maximum: %d)"% [current, maximum])
 	if(maximum != max_health):
 		change_max_health(current, maximum)
 	else:
@@ -27,19 +28,21 @@ func update_hearts(current: int, maximum: int):
 func change_max_health(current: int, maximum: int):
 	if(current == maximum):
 		regenerate_full()
-	if(max_health < maximum): #gain more hearts
-		for i in range(max_health, maximum):
+	var max_previous = max_health
+	max_health = maximum # put in frontsssd
+	health = current
+	if(max_previous < maximum): #gain more hearts
+		for i in range(max_previous, maximum):
 			var heart = heart_scene.instantiate()
 			hearts_container.add_child(heart)
 			hpList.append(heart)
 	#if(current != maximum): # if not full hp when increasing hp?
+
 	# play animations:
 	await get_tree().process_frame
-	for i in range(max_health, maximum):
+	for i in range(max_previous, maximum):
 		await hpList[i].play_animation_till_frame("create", 7)
-	max_health = maximum
-	health = current
-	pass
+
 
 func take_dmg(current: int):
 	if(current<=0):

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var follow_range: float = 1200
 @export var charge_range: float = 700
 @export var fighting_range: float = 400
+@export var hp: int = 5
 var distance: float
 var direction: Vector2 = Vector2.DOWN
 @export var attack_hitbox: PackedScene
@@ -55,9 +56,18 @@ func _physics_process(_delta):
 
 func take_damage(sender):
 	print("%s took %d damage from %s" % [self.to_string(), sender.damage, sender])
+	hp -= sender.damage
+	if(hp<0):
+		queue_free()
 	# TODO:enemy hp management
 	# TODO:enemy knockback
-	queue_free()
+	#if sender.knockback != 0:
+			#velocity = sender.knockback * Vector2(cos(sender.get_parent().rotation), sin(sender.get_parent().rotation))#
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(1, 0, 0, 1), 0.1)
+	# Wait and fade back to normal color (white = normal modulate)
+	tween.tween_interval(0.1)
+	tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 0.1)
 
 func set_target(target: Node):
 	target_node = target
@@ -154,7 +164,7 @@ func handle_charge(_delta: float):
 	elif charge_timer < (charge_wait_time + charge_charge_time):
 		if not has_charge_hitbox:
 			var hitbox = attack_hitbox.instantiate()
-			hitbox.init_hitbox(Vector2(180,120), Vector2(1,0), Vector2(150,0), 0.9, 3, -1)
+			hitbox.init_hitbox(Vector2(180,120), Vector2(1,0), Vector2(150,0), 0.9, 2, -1)
 			add_child(hitbox)
 			has_charge_hitbox = true
 		direction = (target_node.global_position - global_position).normalized()

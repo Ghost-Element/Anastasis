@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var tilemap := get_node("/root/Game/TileMapLayer") # terrible code for refactoring
+#@onready var tilemap := get_node("/root/Game/TileMapLayer") # terrible code for refactoring
 @onready var collider = $CollisionShape2D
 
 @export var damage: int = 1
@@ -39,3 +39,5 @@ func _on_body_entered(body):
 		body.take_damage(self)  # Ensure enemy has this method
 	if body is TileMapLayer:
 		print("Player is hitting terrain")
+	if body.is_in_group("BreakableFence"):
+		body.take_damage(self)
