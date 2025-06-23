@@ -1,5 +1,5 @@
 Game Name:
-Anastasis (visual resurrection)
+Anastasis
 Github:
 https://github.com/Ghost-Element/Anastasis
 contributors:
